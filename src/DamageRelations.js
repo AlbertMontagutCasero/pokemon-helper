@@ -23,7 +23,7 @@ export class DamageRelations {
     const dealsX05 = damageRelations.half_damage_to;
     const receiveX0 = damageRelations.no_damage_from;
     const dealsX0 = damageRelations.no_damage_to;
-
+    
     this.receiveX2.push(...this.getNames(receiveX2))
     this.dealsX2.push(...this.getNames(dealsX2))
     this.receiveX05.push(...this.getNames(receiveX05))
@@ -42,7 +42,7 @@ export class DamageRelations {
   }
 
   getNames(objectWithNamesList){
-    objectWithNamesList.map(object => {
+    return objectWithNamesList.map(object => {
       return object.name
     })
   }
