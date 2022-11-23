@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import {fetchFromURL} from "./FetchFromURL";
-import {capitalizeFirst} from "./ReactHelpers";
+import {capitalizeFirst} from "./FormatFunctions";
 import {PokemonDamageRelations} from "./PokemonDamageRelations";
 
 const baseURL = `https://pokeapi.co/api/v2`
@@ -19,7 +19,7 @@ export function Pokemon(props) {
       setPokemonData(pokemonJson)
       setIsLoading(false)
     })()
-  }, [isLoading]);
+  }, [isLoading, props.id]);
 
 
   if (isLoading) {
@@ -27,12 +27,14 @@ export function Pokemon(props) {
   }
 
   return <div className="pokemon">
-    {capitalizeFirst(props.id)}
-    <div>
-      Types :
-      {getTypes().map(function (type) {
-        return ` ${type.name}`
-      })}
+    <div className="title">{capitalizeFirst(props.id)}</div>
+    <div >
+      <div className="types">
+        <b>Types :
+        {getTypes().map(function (type) {
+          return ` ${capitalizeFirst(type.name)}`
+        })}</b>
+      </div>
       <PokemonDamageRelations types={getTypes()}/>
     </div>
   </div>;

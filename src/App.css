@@ -5,12 +5,47 @@ html, body {
 
 
 .pokemon {
-  padding: 1rem;
   margin: 1rem;
   border:  1px solid brown;
 }
 
+.title {
+  font-weight: bold;
+  font-size: x-large;
+  padding: 1rem 1rem 0.25rem 1rem;
+}
 
-h4 {
-  margin: 0.25rem 0;
+.types {
+  padding: 0 0 0 1rem;
+}
+
+
+.damageRelationsWrapper h4 {
+  margin: 0.25rem 1rem 0.5rem 1rem;
+}
+
+.damageRelationsWrapper {
+  padding: 0.5rem 0 0 0;
+}
+
+.damageRelation {
+  padding: 0.25rem 0;
+}
+
+.damageRelation div {
+
+  font-weight: bold;
+}
+
+.good, .bad {
+  padding: 0.5rem 1rem;
+}
+
+.good {
+  background-color: lightgreen;
+
+}
+
+.bad {
+  background-color: lightcoral;
 }

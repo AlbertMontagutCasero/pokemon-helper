@@ -1,11 +1,13 @@
+import {capitalizeFirst} from './FormatFunctions';
+
 export function DamageRelation(props) {
   const {description, damageRelation} = props
 
-  return <div>
-    {description}
+  return <div className={"damageRelation"}>
+    <span>{description}</span>
     <div>
       {damageRelation.map(name => {
-        return ` ${name}`
+        return ` ${capitalizeFirst(name)}`
       })}
     </div>
   </div>

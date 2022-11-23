@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
-import {DamageRelations} from "./DamageRelations";
+import {DamageRelations} from './Model/DamageRelations';
 import {DamageRelation} from './DamageRelation';
 import {fetchFromURL} from './FetchFromURL';
+import {getNamesWithCounter} from './FormatFunctions';
 
 export function PokemonDamageRelations(props) {
   const {types} = props
@@ -23,7 +24,7 @@ export function PokemonDamageRelations(props) {
       setDamageRelations(damageRelations)
       setLoading(false)
     })()
-  }, [isLoading])
+  }, [isLoading, types])
 
   if (isLoading) {
     return <div>Loading</div>
@@ -31,16 +32,19 @@ export function PokemonDamageRelations(props) {
 
   return (
 
-    <div>
+    <div className="damageRelationsWrapper">
       <h4>Daños :</h4>
 
-      <DamageRelation description={"☠ le hacen super efectivo"} damageRelation={damageRelations.receiveX2}/>
-      <DamageRelation description={"🗡 hace super efectivo"} damageRelation={damageRelations.dealsX2}/>
-      <DamageRelation description={"🛡 le hacen mitad de daño"} damageRelation={damageRelations.receiveX05}/>
-      <DamageRelation description={"🗡 50% hace mitad de daño"} damageRelation={damageRelations.dealsX05}/>
-      <DamageRelation description={"👻 no le hacen daño"} damageRelation={damageRelations.receiveX0}/>
-      <DamageRelation description={"🗡👻 no hace daño a"} damageRelation={damageRelations.dealsX0}/>
-
+      <div className='good'>
+        <DamageRelation description={"🗡 Hace super efectivo ✅"} damageRelation={getNamesWithCounter(damageRelations.dealsX2)}/>
+        <DamageRelation description={"🛡 Le hacen mitad de daño ✅"} damageRelation={getNamesWithCounter(damageRelations.receiveX05)}/>
+        <DamageRelation description={"👻 No le hacen daño ✅"} damageRelation={damageRelations.receiveX0}/>
+      </div>
+      <div className='bad'>
+        <DamageRelation description={"☠ Le hacen super efectivo ❌"} damageRelation={getNamesWithCounter(damageRelations.receiveX2)}/>
+        <DamageRelation description={"🗡 50% Hace mitad de daño ❌"} damageRelation={getNamesWithCounter(damageRelations.dealsX05)}/>
+        <DamageRelation description={"🗡👻 No hace daño a ❌"} damageRelation={damageRelations.dealsX0}/>
+      </div>
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import {Pokemon} from './Pokemon';
 
 function PokemonList() {
+  const team = ['lairon', 'piloswine', 'sunflora', 'gible', 'illumise', 'togepi']
+
   return <div>
-    <Pokemon id="lairon" />
-    <Pokemon id="cubone" />
-
-
+    {team.map(teamMember => {
+      return <Pokemon id={teamMember}/>
+    })}
   </div>
 }
 
